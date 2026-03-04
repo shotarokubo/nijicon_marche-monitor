@@ -2,6 +2,7 @@ import requests
 import json
 import os
 from datetime import datetime, timedelta
+import time
 
 # --- 設定 ---
 LINE_TOKEN = os.getenv('LINE_ACCESS_TOKEN')
@@ -58,43 +59,61 @@ def main():
         c_name = creator["name"]
         c_id = creator["id"]
         
-        list_api = f"https://api.marche-yell.com/api/public/products?creator_marche_id={c_id}&limit=50"
-        headers = {"User-Agent": "Mozilla/5.0"}
-
-        try:
-            res = requests.get(list_api, headers=headers, timeout=15)
-            res.raise_for_status()
-            products = res.json().get('products', [])
+        # メンバーごとに全件取得（ページネーション対応）
+        offset = 0
+        while True:
+            list_api = f"https://api.marche-yell.com/api/public/products?creator_marche_id={c_id}&limit=100&offset={offset}"
+            headers = {"User-Agent": "Mozilla/5.0"}
             
-            for p in products:
-                p_id = str(p.get('id'))
-                title = p.get('title', '不明')
-                start_jst = convert_to_jst_full(p.get('sales_start_at'))
-                limit = p.get('limit_quantity', 0)
-                stock = limit - p.get('sold_quantity', 0)
-                # GASの解析ロジックと合わせるため、アンダースコアで連結
-                db_key = f"{c_id}_{p_id}"
+            try:
+                res = requests.get(list_api, headers=headers, timeout=15)
+                res.raise_for_status()
+                products = res.json().get('products', [])
                 
-                msg = ""
-                if db_key not in last_data:
-                    msg = f"🌈【虹コン/新着】{c_name}\n📝 {title}\n📅 開始: {start_jst}\n📦 在庫: {stock}/{limit}\n🔗 https://marche-yell.com/{c_id}/products/{p_id}"
-                elif stock > 0 and last_data[db_key].get('stock', 0) == 0:
-                    msg = f"🔄【虹コン/復活】{c_name}\n📝 {title}\n📦 残り {stock}個！\n🔗 https://marche-yell.com/{c_id}/products/{p_id}"
+                if not products: # データがなくなったら次のメンバーへ
+                    break
                 
-                if msg:
-                    send_line(msg)
+                for p in products:
+                    p_id = str(p.get('id'))
+                    title = p.get('title', '不明')
+                    start_jst = convert_to_jst_full(p.get('sales_start_at'))
+                    limit = p.get('limit_quantity', 0)
+                    stock = limit - p.get('sold_quantity', 0)
+                    db_key = f"{c_id}_{p_id}"
+                    
+                    msg = ""
+                    # 新着検知
+                    if db_key not in last_data:
+                        msg = f"🌈【虹コン/新着】{c_name}\n📝 {title}\n📅 開始: {start_jst}\n📦 在庫: {stock}/{limit}\n🔗 https://marche-yell.com/{c_id}/products/{p_id}"
+                    # 復活検知
+                    elif stock > 0 and last_data[db_key].get('stock', 0) == 0:
+                        msg = f"🔄【虹コン/復活】{c_name}\n📝 {title}\n📦 残り {stock}個！\n🔗 https://marche-yell.com/{c_id}/products/{p_id}"
+                    
+                    if msg:
+                        send_line(msg)
 
-                current_all_data[db_key] = {
-                    "name": c_name,
-                    "title": title, 
-                    "stock": stock, 
-                    "limit": limit,
-                    "start": start_jst,
-                    "creator_id": c_id
-                }
-        except Exception as e:
-            print(f"Error ({c_name}): {e}")
+                    # データを保存/更新
+                    current_all_data[db_key] = {
+                        "name": c_name,
+                        "title": title, 
+                        "stock": stock, 
+                        "limit": limit,
+                        "start": start_jst,
+                        "creator_id": c_id
+                    }
+                
+                # 100件未満ならこれ以上データはないので終了
+                if len(products) < 100:
+                    break
+                
+                offset += 100
+                time.sleep(1) # API負荷軽減のための待機
+                
+            except Exception as e:
+                print(f"Error ({c_name}): {e}")
+                break
 
+    # 全データを保存
     with open(DB_FILE, "w", encoding="utf-8") as f:
         json.dump(current_all_data, f, ensure_ascii=False, indent=2)
 
