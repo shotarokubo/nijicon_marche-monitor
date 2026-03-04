@@ -72,6 +72,7 @@ def main():
                 start_jst = convert_to_jst_full(p.get('sales_start_at'))
                 limit = p.get('limit_quantity', 0)
                 stock = limit - p.get('sold_quantity', 0)
+                # GASの解析ロジックと合わせるため、アンダースコアで連結
                 db_key = f"{c_id}_{p_id}"
                 
                 msg = ""
@@ -94,7 +95,6 @@ def main():
         except Exception as e:
             print(f"Error ({c_name}): {e}")
 
-    # JSON保存
     with open(DB_FILE, "w", encoding="utf-8") as f:
         json.dump(current_all_data, f, ensure_ascii=False, indent=2)
 
