@@ -16734,5 +16734,29 @@
     "limit": 10,
     "start": "2026-07-28 22:10",
     "creator_id": "2c_tsudukishiy"
+  },
+  "2c_ichimiyayui_172985": {
+    "name": "一宮ゆい",
+    "title": "【一宮ゆい】12周年ワンマンマルシェ",
+    "stock": 20,
+    "limit": 20,
+    "start": "2026-07-30 21:00",
+    "creator_id": "2c_ichimiyayui"
+  },
+  "2c_ichimiyayui_172986": {
+    "name": "一宮ゆい",
+    "title": "【一宮ゆい】 虹コン歌うよ！ボイスマルシェ",
+    "stock": 15,
+    "limit": 15,
+    "start": "2026-07-30 21:00",
+    "creator_id": "2c_ichimiyayui"
+  },
+  "2c_ichimiyayui_172987": {
+    "name": "一宮ゆい",
+    "title": "【一宮ゆい】夏曲マルシェ",
+    "stock": 20,
+    "limit": 20,
+    "start": "2026-07-30 21:00",
+    "creator_id": "2c_ichimiyayui"
   }
 }
