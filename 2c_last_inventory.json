@@ -16790,5 +16790,29 @@
     "limit": 30,
     "start": "2026-08-04 21:00",
     "creator_id": "2c_aoyamauta"
+  },
+  "2c_ishihamamei_173787": {
+    "name": "石浜芽衣",
+    "title": "【石浜芽衣】24歳お誕生日マルシェ🎂",
+    "stock": 40,
+    "limit": 40,
+    "start": "2026-08-07 21:00",
+    "creator_id": "2c_ishihamamei"
+  },
+  "2c_ishihamamei_173788": {
+    "name": "石浜芽衣",
+    "title": "【石浜芽衣】はまふぇす2026ありがとマルシェ💚",
+    "stock": 40,
+    "limit": 40,
+    "start": "2026-08-07 21:00",
+    "creator_id": "2c_ishihamamei"
+  },
+  "2c_ishihamamei_173789": {
+    "name": "石浜芽衣",
+    "title": "【石浜芽衣】TIFありがとマルシェ☀️",
+    "stock": 20,
+    "limit": 20,
+    "start": "2026-08-07 21:00",
+    "creator_id": "2c_ishihamamei"
   }
 }
