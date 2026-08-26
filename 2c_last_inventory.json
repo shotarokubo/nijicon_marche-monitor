@@ -16870,5 +16870,29 @@
     "limit": 10,
     "start": "2026-08-24 23:00",
     "creator_id": "2c_hirutaairi"
+  },
+  "2c_kuriharamay_176019": {
+    "name": "栗原舞優",
+    "title": "【栗原舞優】 🍧火曜日の栗原舞優ありがとうマユシェ🏮",
+    "stock": 15,
+    "limit": 15,
+    "start": "2026-08-27 21:00",
+    "creator_id": "2c_kuriharamay"
+  },
+  "2c_kuriharamay_176020": {
+    "name": "栗原舞優",
+    "title": "【栗原舞優】浴衣マユシェ",
+    "stock": 20,
+    "limit": 20,
+    "start": "2026-08-27 21:30",
+    "creator_id": "2c_kuriharamay"
+  },
+  "2c_kuriharamay_176021": {
+    "name": "栗原舞優",
+    "title": "【栗原舞優】夏のボイスマユシェ",
+    "stock": 10,
+    "limit": 10,
+    "start": "2026-08-27 22:00",
+    "creator_id": "2c_kuriharamay"
   }
 }
