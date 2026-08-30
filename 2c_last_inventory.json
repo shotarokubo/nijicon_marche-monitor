@@ -16922,7 +16922,7 @@
   "2c_obayashiyuik_176456": {
     "name": "尾林結花",
     "title": "夏ありがとうマルシェ",
-    "stock": 30,
+    "stock": 0,
     "limit": 30,
     "start": "2026-08-30 22:00",
     "creator_id": "2c_obayashiyuik"
@@ -16930,7 +16930,7 @@
   "2c_obayashiyuik_176457": {
     "name": "尾林結花",
     "title": "ボイスマルシェ",
-    "stock": 20,
+    "stock": 0,
     "limit": 20,
     "start": "2026-08-30 22:30",
     "creator_id": "2c_obayashiyuik"
