@@ -16934,5 +16934,45 @@
     "limit": 20,
     "start": "2026-08-30 22:30",
     "creator_id": "2c_obayashiyuik"
+  },
+  "2c_ichimiyayui_176577": {
+    "name": "一宮ゆい",
+    "title": "【一宮ゆい】ゆいちお誕生日おめでとうマルシェ🎂①",
+    "stock": 8,
+    "limit": 10,
+    "start": "2026-08-31 15:00",
+    "creator_id": "2c_ichimiyayui"
+  },
+  "2c_ichimiyayui_176578": {
+    "name": "一宮ゆい",
+    "title": "【一宮ゆい】ゆいちお誕生日おめでとうマルシェ🎂②",
+    "stock": 7,
+    "limit": 10,
+    "start": "2026-08-31 15:00",
+    "creator_id": "2c_ichimiyayui"
+  },
+  "2c_tsudukishiy_176566": {
+    "name": "都月しより",
+    "title": "【都月しより】♡つづまるしぇ♡夏フェスありがとう🌻その1",
+    "stock": 10,
+    "limit": 10,
+    "start": "2026-08-31 20:00",
+    "creator_id": "2c_tsudukishiy"
+  },
+  "2c_tsudukishiy_176567": {
+    "name": "都月しより",
+    "title": "【都月しより】♡つづまるしぇ♡夏フェスありがとう🌻その2",
+    "stock": 10,
+    "limit": 10,
+    "start": "2026-08-31 20:05",
+    "creator_id": "2c_tsudukishiy"
+  },
+  "2c_tsudukishiy_176568": {
+    "name": "都月しより",
+    "title": "【都月しより】♡つづまるしぇ♡8月雑談🎐꙳⋆",
+    "stock": 10,
+    "limit": 10,
+    "start": "2026-08-31 20:10",
+    "creator_id": "2c_tsudukishiy"
   }
 }
